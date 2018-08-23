@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-10">
+  <h1>Subjects</h1>
+  <p>This is a list of all subjects taught at Brandeis.</p>
+
+  <table class="table table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name</th>
+        <th>Sid</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @subjects.each do |subject| %>
+        <tr>
+          <td><%= subject.name %></td>
+          <td><%= subject.sid %></td>
+          <td><%= button_to 'Show', subject, method: :get, class: 'btn .btn-success darkGrayButton' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-1">
+</div>

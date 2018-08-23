@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<script>
+  function submitFrmAjax(){
+   $.ajax({
+         url : "/results",
+         data : $("form#result_form").serialize()
+    });
+  }
+</script>
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-10">
+  <h1>Courses</h1>
+  <p>Here you can find all the courses taught at Brandeis.</p>
+
+  <br>
+  <div class="row">
+    <%= form_tag results_path, method: 'get', remote: true, role: "form",class: "form", id: "result_form" do %>
+      <div class="col-md-5"><%= text_field_tag(:keywords, params[:keywords], class: 'form-control', :placeholder => "Enter Keywords Here", onkeyup: 'submitFrmAjax()') %></div>
+      <div class="col-md-5"><%= select_tag(:subject, options_from_collection_for_select(@subjects, "id", "name"), prompt: "Select a Subject", class: 'form-control', onchange: 'submitFrmAjax()') %></div>
+    <% end %>
+  </div>
+  <br>
+
+  <div id="search_results">
+  </div>
+</div>
+
+<div class="col-md-1">
+</div>

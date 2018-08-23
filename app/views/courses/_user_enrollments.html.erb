@@ -1,0 +1,29 @@
+<% if @enrolled_courses.empty? %>
+      
+  <p>You are not enrolled in any courses!</p>
+
+<% else %>
+  
+  <table class="table table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Description</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @enrolled_courses.each do |course| %>
+        <tr>
+          <td><%= course.name %></td>
+          <td><%= course.code %></td>
+          <td><%= course.description %></td>
+          <td><%= link_to 'Show', course, method: :get, class: 'btn .btn-success darkGrayButton' %></td>
+          <td><%= button_to 'Unenroll', enrollments_delete_path, {method: :delete, remote: true, params:{course_id: course, user_id: current_user}, class: 'btn .btn-success rbutton'} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>

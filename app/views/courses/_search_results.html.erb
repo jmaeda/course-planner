@@ -1,0 +1,8 @@
+<div class = "container">
+	<%if @courses.nil? || @courses.length == 0%>
+		<br>
+		<h2>No Matches Found</h2>
+	<% else %>
+		<%= render "result" %>
+	<% end %>
+</div>
